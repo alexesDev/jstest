@@ -23,5 +23,9 @@ module.exports.get = (path, obj) => {
 // Переписать функцию без async/await
 // (initialValue: T, run: (v: T) => T) => Promise<T>
 module.exports.process = async (initialValue, run) => {
-  return initialValue;
+  try {
+     return run(await run(initialValue));
+  } catch (err) {
+    return err.message;
+  }
 };
