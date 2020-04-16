@@ -24,6 +24,7 @@ test('groupBy', () => {
 test('get', () => {
   const data = {
     id: 10,
+    next: null,
     author: {
       name: 'Pushkin',
     },
@@ -38,6 +39,7 @@ test('get', () => {
   expect(get('title', data)).toBe(undefined);
   expect(get('author.name', data)).toBe('Pushkin');
   expect(get('comments.0.text', data)).toBe('Super!');
+  expect(get('next.id', data)).toBe(null);
 });
 
 test('process', async () => {
