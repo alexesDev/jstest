@@ -24,7 +24,8 @@ module.exports.get = (path, obj) => {
 // (initialValue: T, run: (v: T) => T) => Promise<T>
 module.exports.process = async (initialValue, run) => {
   try {
-     return run(await run(initialValue));
+    const result = run(await run(initialValue));
+    return Promise.resolve(result);
   } catch (err) {
     return err.message;
   }
